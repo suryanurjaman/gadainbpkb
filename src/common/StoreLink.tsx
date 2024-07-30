@@ -1,19 +1,22 @@
-import { ButtonLinkProps } from "./ButtonLink";
+// StoreLink.tsx
+
+interface ButtonLinkProps {
+  href: string;
+  className?: string;
+  target?: string;
+  text: string;
+}
 
 function StoreLink({
   href,
   className,
   target,
-  logo,
-  upperText,
-  lowerText,
+  text,
 }: ButtonLinkProps) {
   return (
-    <a href={href} className={className} target={target}>
-      <img src={logo} alt={`${lowerText} logo`} className="w-5" />
-      <div>
-        <p className="text-xs">{upperText}</p>
-        <p>{lowerText}</p>
+    <a href={href} className={className} target={target} rel="noopener noreferrer">
+      <div className="flex items-center justify-center">
+        <p className="text-white text-lg font-medium">{text}</p>
       </div>
     </a>
   );

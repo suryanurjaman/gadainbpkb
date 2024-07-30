@@ -1,0 +1,41 @@
+/* Tambahkan dalam file CSS Anda */
+.bg-gradient-to-r {
+    background: linear-gradient(to right, #FFA500, #FF6F00, #FF3D00);
+}
+  
+  .custom-shadow {
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Kustomisasi ukuran dan warna shadow sesuai kebutuhan */
+  }
+
+  /* FAQ.css */
+
+.accordion-content {
+  transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+  overflow: hidden;
+}
+
+.accordion-content.max-h-40 {
+  max-height: 10rem; /* Sesuaikan sesuai dengan tinggi konten */
+  padding: 1rem; /* Tambahkan padding saat aktif */
+}
+
+/* App.css */
+
+.phrase {
+  display: inline-block;
+  opacity: 0;
+  animation: fadeInOut 3s linear infinite;
+}
+
+/* App.css */
+
+.fade-in {
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+

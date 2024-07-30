@@ -1,92 +1,108 @@
-import AppFrame from "../assets/app_frame.png";
-import ShieldCheck from "../assets/icons/check.png";
-import Coins from "../assets/icons/coins.png";
-import Frames from "../assets/frames.png";
+import React, { useState } from 'react';
+import Card from '../common/Card';
+import { FaHeadset, FaWallet, FaShieldAlt, FaArrowRight } from 'react-icons/fa';
+import "../App.css";
 
-function Features() {
-  return (
-    <section
-      id="features"
-      className="flex max-w-7xl flex-col gap-10 px-8 pt-10 lg:px-12 xl:m-auto xl:pt-20"
-    >
-      <article className="m-auto w-[30ch] text-center text-gray-500 md:m-0 md:w-full">
-        <h2 className="mb-4 text-4xl font-semibold text-gray-800">
-          Make every penny count
-        </h2>
-        <p>
-          Spend smarter, lower your bills, get cashback on everything you buy,
-          <br />
-          and unlock credit to grow your business.
-        </p>
-      </article>
-
-      <article className="flex w-full flex-col gap-8 overflow-hidden xl:h-96 xl:flex-row">
-        <div className="flex flex-col rounded-2xl bg-sky-100 px-4 sm:px-0 md:flex-row md:gap-8 xl:w-2/3">
-          <div className="mt-10 flex flex-col justify-center gap-4 text-center sm:mx-10 md:mx-0 md:ml-10 md:w-1/2 md:text-left">
-            <h2 className="m-auto text-center text-3xl font-semibold text-gray-800 sm:w-[18ch] md:m-0 md:text-left">
-              Pay with Kobodrop, quick, simple and easy
-            </h2>
-            <p className="m-auto text-center text-gray-500 sm:w-[34ch] md:m-0 md:text-left">
-              Paying your bills on Kobodrop has never been easier. Whether you
-              are paying for electricity or internet, Kobodrop gets it done
-              within seconds.
-            </p>
-          </div>
-
-          <div className="m-auto mt-10 max-w-72 md:mx-10 md:w-1/2 lg:mx-0">
-            <img src={AppFrame} alt="Kobodrop app frame" />
-          </div>
-        </div>
-
-        <div className="flex flex-col justify-center gap-4 rounded-2xl bg-indigo-100 p-10 xl:w-1/3">
-          <div className="w-fit rounded-full bg-indigo-200 p-4">
-            <img src={ShieldCheck} alt="" />
-          </div>
-          <h2 className="text-3xl font-semibold text-gray-800">
-            Bank level security
-          </h2>
-          <p className="text-gray-500">
-            Your money is 100% safe and secure on Kobodrop. No hassles, no
-            glitches, get access to your money anytime.
-          </p>
-        </div>
-      </article>
-
-      <article className="flex w-full flex-col gap-8 xl:h-96 xl:flex-row">
-        <div className="flex flex-col justify-center gap-4 rounded-2xl bg-orange-100 p-10 xl:w-1/3">
-          <div className="w-fit rounded-full bg-orange-200 p-4">
-            <img src={Coins} alt="" />
-          </div>
-          <h2 className="text-3xl font-semibold text-gray-800">
-            Cost reduction
-          </h2>
-          <p className="text-gray-500">
-            Kobodrop reduced payments maintenance and processing fees. No hidden
-            fees.
-          </p>
-        </div>
-
-        <div className="flex flex-col gap-8 overflow-hidden rounded-2xl bg-sky-100 px-4 sm:px-0 md:flex-row md:gap-8 xl:w-2/3">
-          <div className="mt-10 flex flex-col justify-center gap-4 text-center sm:mx-10 md:mx-0 md:ml-10 md:mt-0 md:w-1/2 md:text-left">
-            <h2 className="m-auto text-center text-3xl font-semibold text-gray-800 sm:w-[18ch] md:m-0 md:text-left">
-              Send, receive and Exchange money
-            </h2>
-            <p className="m-auto text-center text-gray-500 sm:w-[34ch] md:m-0 md:text-left">
-              Transfers, payments all work on Kobodrop. Get your alert message
-              immediately after a completed transaction.
-            </p>
-          </div>
-
-          <div className="m-auto max-w-96 md:mt-36 md:w-1/2">
-            <img
-              src={Frames}
-              alt="Frame displaying logos of various payment solutions"
-            />
-          </div>
-        </div>
-      </article>
-    </section>
-  );
+interface CardData {
+    id: number;
+    title: string;
+    description: string;
+    icon: JSX.Element;
+    className: string;
 }
+
+const Features: React.FC = () => {
+    const [cards, setCards] = useState<CardData[]>([
+        {
+            id: 1,
+            title: 'Cair Tanpa Potongan',
+            description: 'Nikmati pencairan dana tanpa potongan biaya admin atau tambahan lainnya. Dengan layanan kami, Anda akan mendapatkan jumlah penuh yang Anda ajukan tanpa potongan tersembunyi.',
+            icon: <FaHeadset />,
+            className: 'bg-white text-orange-500',
+        },
+        {
+            id: 2,
+            title: 'Bunga Rendah',
+            description: 'Dapatkan bunga pinjaman yang rendah dan kompetitif. Kami menawarkan suku bunga yang lebih rendah dibandingkan penyedia lain, membantu Anda menghemat lebih banyak uang selama masa pinjaman.',
+            icon: <FaWallet />,
+            className: 'bg-orange-500 text-white',
+        },
+        {
+            id: 3,
+            title: 'Dana Cair Tinggi',
+            description: 'Akses dana pinjaman yang tinggi untuk memenuhi kebutuhan besar Anda. Kami memberikan limit pinjaman yang fleksibel dan sesuai dengan kebutuhan finansial Anda.',
+            icon: <FaShieldAlt />,
+            className: 'bg-white text-orange-500',
+        },
+    ]);
+
+    const [animationState, setAnimationState] = useState<'initial' | 'animated'>('initial');
+
+    const handleNext = () => {
+        setCards((prevCards) => {
+            const [first, ...rest] = prevCards;
+            return [...rest, first];
+        });
+
+        setAnimationState('animated');
+        setTimeout(() => {
+            setAnimationState('initial');
+        }, 100); // Duration should match with the transition duration
+    };
+
+    return (
+        <section
+            id="About Us"
+            className="relative mx-4 max-w-7xl md:mx-auto px-4 py-12 rounded-2xl bg-gradient-to-b  flex flex-col items-center justify-center text-center">
+            <h2 className="text-2xl md:text-5xl font-semibold text-orange-500 mb-2 ">KENAPA HARUS DI MEGA FINANCE</h2>
+            <span className="w-[80%] h-0.5 bg-gradient-to-r from-orange-500 via-orange-300 to-orange-400 mb-8"></span>
+            <p className="text-sm md:text-lg text-gray-600 mb-12 w-full max-w-4xl">
+                Temukan solusi finansial yang tepat dengan produk Mega Finance yang mengakomodasi kebutuhan Anda, memberikan kemudahan akses bagi berbagai kalangan serta berbagai lapisan masyarakat untuk meraih kesuksesan finansial secara lebih efektif, mudah dan terpercaya.
+            </p>
+            <div className="flex justify-center items-center gap-6 relative">
+                {cards.map((card, index) => {
+                    let transformClass = '';
+                    let isActive = index === 1;
+                    let hiddenClass = ''
+
+
+                    if (index === 0 || index === 2) {
+                        hiddenClass = 'hidden sm:block';
+                    }
+
+                    if (index === 0) {
+                        transformClass = 'transform scale-90 -translate-x-8';
+                    } else if (index === 2) {
+                        transformClass = animationState === 'animated' ? 'transform scale-[80%] translate-x-12' : 'transform scale-90 translate-x-8';
+                    } else if (index === 1) {
+                        transformClass = 'transform scale-100 z-10';
+                    }
+
+                    return (
+                        <div
+                            key={card.id}
+                            className={`flex-shrink-0 w-80 ${transformClass} ${hiddenClass} transition-transform duration-1000 ease-in-out`}
+                        >
+                            <Card
+                                {...card}
+                                className={`p-8 rounded-xl shadow-lg ${index === 1 ? 'bg-gradient-to-r from-orange-500 to-orange-400 text-white' : 'bg-white text-orange-500'}`}
+                                isActive={isActive}
+                                textColor={index === 1 ? 'text-white' : 'text-gray-600'}
+                            />
+                        </div>
+                    );
+                })}
+            </div>
+            <div className="flex justify-center mt-8 gap-4">
+                <button
+                    className="flex items-center justify-center w-12 h-12 bg-orange-500 text-white rounded-full shadow-lg hover:bg-orange-600 transition-colors duration-300"
+                    onClick={handleNext}
+                >
+                    <FaArrowRight className="text-xl" />
+                </button>
+            </div>
+        </section>
+    );
+};
 
 export default Features;

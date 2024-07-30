@@ -1,6 +1,4 @@
-import AppleLogo from "../assets/logos/app_store.svg";
-import GooglePlay from "../assets/logos/google_play.svg";
-import GooglePlayBright from "../assets/logos/google_play_bright.svg";
+// StoreLinks.tsx
 import StoreLink from "../common/StoreLink";
 
 interface StoreLinksProps {
@@ -12,51 +10,16 @@ export enum BtnTypes {
   Variant,
 }
 
-function StoreLinks({ type }: StoreLinksProps) {
-  if (type === BtnTypes.Standard) {
-    return (
-      <div className="mt-10 hidden justify-center space-x-2 sm:flex md:justify-normal">
-        <StoreLink
-          href="https://www.apple.com/app-store"
-          upperText="Download on the"
-          lowerText="App Store"
-          logo={AppleLogo}
-          target="_blank"
-          className="flex gap-3 rounded-lg bg-zinc-900 px-4 py-3 text-white hover:bg-zinc-950 active:bg-zinc-800"
-        />
-        <StoreLink
-          href="https://play.google.com"
-          upperText="Get it on"
-          lowerText="Google Play"
-          logo={GooglePlay}
-          target="_blank"
-          className="flex gap-3 rounded-lg bg-zinc-900 px-4 py-3 text-white hover:bg-zinc-950 active:bg-zinc-800"
-        />
-      </div>
-    );
-  }
-  if (type === BtnTypes.Variant) {
-    return (
-      <>
-        <StoreLink
-          href="https://www.apple.com/app-store"
-          upperText="Download on the"
-          lowerText="App Store"
-          logo={AppleLogo}
-          target="_blank"
-          className="my-4 flex gap-3 rounded-lg border bg-transparent px-2 py-1 text-white hover:bg-zinc-950 active:bg-zinc-800"
-        />
-        <StoreLink
-          href="https://play.google.com"
-          upperText="Get it on"
-          lowerText="Google Play"
-          logo={GooglePlayBright}
-          target="_blank"
-          className="my-4 flex gap-3 rounded-lg border bg-transparent px-2 py-1 text-white hover:bg-zinc-950 active:bg-zinc-800"
-        />
-      </>
-    );
-  }
+function StoreLinks({ }: StoreLinksProps) {
+  return (
+    <div className="mt-10 flex space-x-2 justify-center md:justify-start">
+      <StoreLink
+        href="#ajukan-sekarang" // Ganti dengan URL atau aksi yang sesuai
+        text="Ajukan Sekarang"
+        className="flex items-center justify-center rounded-xl bg-gradient-to-r from-orange-500 to-orange-400 px-8 py-4 text-whiteactive:bg-orange-700 transition duration-300 ease-in-out hover:opacity-90"
+      />
+    </div>
+  );
 }
 
 export default StoreLinks;
