@@ -1,5 +1,3 @@
-// StoreLink.tsx
-
 interface ButtonLinkProps {
   href: string;
   className?: string;
@@ -16,7 +14,8 @@ function StoreLink({
   return (
     <a href={href} className={className} target={target} rel="noopener noreferrer">
       <div className="flex items-center justify-center">
-        <p className="text-white text-lg font-medium">{text}</p>
+        {/* Hapus kelas text-white dari sini */}
+        <p className="text-md md:text-sm font-sans ">{text}</p>
       </div>
     </a>
   );

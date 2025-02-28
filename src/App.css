@@ -14,11 +14,6 @@
   overflow: hidden;
 }
 
-.accordion-content.max-h-40 {
-  max-height: 10rem; /* Sesuaikan sesuai dengan tinggi konten */
-  padding: 1rem; /* Tambahkan padding saat aktif */
-}
-
 /* App.css */
 
 .phrase {

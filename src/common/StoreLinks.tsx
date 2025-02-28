@@ -1,8 +1,10 @@
-// StoreLinks.tsx
 import StoreLink from "../common/StoreLink";
 
 interface StoreLinksProps {
   type: BtnTypes;
+  bgColor?: string; // Warna latar belakang
+  textColor?: string; // Warna teks
+  className?: String;
 }
 
 export enum BtnTypes {
@@ -10,13 +12,13 @@ export enum BtnTypes {
   Variant,
 }
 
-function StoreLinks({ }: StoreLinksProps) {
+function StoreLinks({ bgColor = "bg-orange-400", textColor = "text-white", className }: StoreLinksProps) {
   return (
-    <div className="mt-10 flex space-x-2 justify-center md:justify-start">
+    <div className="flex space-x-2 justify-center md:justify-start">
       <StoreLink
-        href="#ajukan-sekarang" // Ganti dengan URL atau aksi yang sesuai
+        href="#pengajuan" // Ganti dengan URL atau aksi yang sesuai
         text="Ajukan Sekarang"
-        className="flex items-center justify-center rounded-xl bg-gradient-to-r from-orange-500 to-orange-400 px-8 py-4 text-whiteactive:bg-orange-700 transition duration-300 ease-in-out hover:opacity-90"
+        className={`flex items-center font-sans justify-center rounded-full ${bgColor} ${className} px-8 py-5 md:px-4 md:py-3 ${textColor} active:bg-orange-700 transition duration-300 ease-in-out hover:opacity-90`}
       />
     </div>
   );
